@@ -1,151 +1,67 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <link rel="import" href="../polymer/polymer.html">
 
-<!--
-An element providing a solution to no problem in particular.
+<script>
 
-Example:
+window.Things = window.Things || {};
 
-    <things-view-open-behavior></things-view-open-behavior>
+/**
+ * View를 Open해주는 Behavior.
+ * view를 기본 다이얼로그로 오픈하는 함수와 FullScreen 다이얼로그로 오픈하는 함수가 있다.
+ *
+ * @polymerBehavior Things.ViewOpenBehavior
+ */
+Things.ViewOpenBehavior = {
+  properties:{
+    /**
+     * view를 full screen 다이얼로그로 오픈요청
+     * 
+     * @event things-open-full-screen-view
+     */
+    /**
+     * view를 기본 다이얼로그로 오픈요청
+     * 
+     * @event things-open-popup-view
+     */
+    /**
+     * 다이얼로그 닫기 요청 .
+     * 
+     * @event things-close-popup-view
+     */
+  },
+  /**
+   * view를 full screen 다이얼로그로 오픈한다.
+   *
+   * @param {String} view
+   * @param {Boolean} modal
+   * @param {Object} record
+   */
+  popupFullScreenView: function(view, modal, record) {
+    var eventDetail = { view: view, record: record, modal: modal };
+    var event = new CustomEvent('things-open-full-screen-view', { 'detail': eventDetail });
+    document.dispatchEvent(event);
+  },
 
-Example:
+  /**
+   * view를 기본 다이얼로그로 오픈한다.
+   *
+   * @param {Object} view
+   * @param {Boolean} modal
+   * @param {Function} openCallback
+   */
+  openPopupView: function(view, modal, openCallback) {
+    var eventDetail = { view: view, modal: modal, openCallback: openCallback };
+    var event = new CustomEvent('things-open-popup-view', { 'detail': eventDetail });
+    document.dispatchEvent(event);
+  },
 
-    <things-view-open-behavior>
-      <h2>Hello things-view-open-behavior</h2>
-    </things-view-open-behavior>
+  /**
+   * view를 기본 다이얼로그로 닫는다.
+   */
+  closePopupView: function() {
+    var eventDetail = this;
+    var event = new CustomEvent('things-close-popup-view', { 'detail': eventDetail });
+    document.dispatchEvent(event);
+  }
+};
 
-@demo demo/index.html
-@hero hero.svg
--->
-
-<dom-module id="things-view-open-behavior">
-  <template>
-    <style>
-      :host {
-        display: block;
-        box-sizing: border-box;
-      }
-
-      .author img {
-        display: block;
-        float: left;
-        margin-right: 5px;
-        max-height: 100px;
-        max-width: 100px;
-      }
-    </style>
-
-    <h1>&lt;things-view-open-behavior&gt;</h1>
-    <content></content>
-    <p class="author">
-      <img src$="{{author.image}}">
-      Cheers,<br/>
-      <span class="name">{{author.name}}</span>
-    </p>
-  </template>
-
-  <script>
-    Polymer({
-      is: 'things-view-open-behavior',
-
-      properties: {
-        /**
-         * `fancy` indicates that the element should don a monocle and tophat,
-         * while checking its pocket watch.
-         */
-        fancy: Boolean,
-
-        /**
-         * Describes the author of the element, but is really just an excuse to
-         * show off JSDoc annotations.
-         *
-         * @type {{name: string, image: string}}
-         */
-        author: {
-          type: Object,
-          // Use `value` to provide a default value for a property, by setting it
-          // on your element's prototype.
-          //
-          // If you provide a function, as we do here, Polymer will call that
-          // _per element instance_.
-          //
-          // We do that to ensure that each element gets its own copy of the
-          // value, rather than having it shared across all instances (via the
-          // prototype).
-          value: function() {
-            return {
-              name:  'Dimitri Glazkov',
-              image: 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg',
-            };
-          }
-        },
-      },
-
-      // Element Lifecycle
-
-      ready: function() {
-        // `ready` is called after all elements have been configured, but
-        // propagates bottom-up. This element's children are ready, but parents
-        // are not.
-        //
-        // This is the point where you should make modifications to the DOM (when
-        // necessary), or kick off any processes the element wants to perform.
-      },
-
-      attached: function() {
-        // `attached` fires once the element and its parents have been inserted
-        // into a document.
-        //
-        // This is a good place to perform any work related to your element's
-        // visual state or active behavior (measuring sizes, beginning animations,
-        // loading resources, etc).
-      },
-
-      detached: function() {
-        // The analog to `attached`, `detached` fires when the element has been
-        // removed from a document.
-        //
-        // Use this to clean up anything you did in `attached`.
-      },
-
-      // Element Behavior
-
-      /**
-       * Sometimes it's just nice to say hi.
-       *
-       * @param {string} greeting A positive greeting.
-       * @return {string} The full greeting.
-       */
-      sayHello: function(greeting) {
-        var response = greeting || 'Hello World!';
-        return 'things-view-open-behavior says, ' + response;
-      },
-
-      /**
-       * The `things-view-open-behavior-lasers` event is fired whenever `fireLasers` is called.
-       *
-       * @event things-view-open-behavior-lasers
-       * @detail {{sound: String}}
-       */
-
-      /**
-       * Attempt to destroy this element's enemies with a beam of light!
-       *
-       * Or, at least, dispatch an event in the vain hope that someone else will
-       * do the zapping.
-       */
-      fireLasers: function() {
-        this.fire('things-view-open-behavior-lasers', {sound: 'Pew pew!'});
-      }
-    });
-  </script>
-</dom-module>
+</script>

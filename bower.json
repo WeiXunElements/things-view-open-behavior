@@ -1,10 +1,10 @@
 {
   "name": "things-view-open-behavior",
-  "version": "1.0.7",
+  "version": "0.0.1",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "things-full-screen-dialog를 열어 주는 Behavior.",
   "keywords": [
     "web-component",
     "polymer",
@@ -12,7 +12,7 @@
   ],
   "main": "things-view-open-behavior.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/ThingsElements/things-view-open-behavior/",
   "ignore": [
     "/.*",
     "/test/"

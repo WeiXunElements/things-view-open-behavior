@@ -1,6 +1,6 @@
 # things-view-open-behavior
 
-An element providing a starting point for your own reusable Polymer elements.
+
 
 
 ## Dependencies
