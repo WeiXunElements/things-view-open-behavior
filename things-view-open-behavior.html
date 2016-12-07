@@ -48,8 +48,8 @@ Things.ViewOpenBehavior = {
    * @param {Boolean} modal
    * @param {Function} openCallback
    */
-  openPopupView: function(view, modal, openCallback) {
-    var eventDetail = { view: view, modal: modal, openCallback: openCallback };
+  openPopupView: function(view, modal, openCallback, closeCallback) {
+    var eventDetail = { view: view, modal: modal, openCallback: openCallback, closeCallback: closeCallback };
     var event = new CustomEvent('things-open-popup-view', { 'detail': eventDetail });
     document.dispatchEvent(event);
   },
