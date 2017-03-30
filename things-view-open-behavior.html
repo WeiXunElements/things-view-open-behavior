@@ -5,6 +5,7 @@
 window.Things = window.Things || {};
 
 /**
+ * ## things-view-open-behavior
  * View를 Open해주는 Behavior.
  * view를 기본 다이얼로그로 오픈하는 함수와 FullScreen 다이얼로그로 오픈하는 함수가 있다.
  *
@@ -14,26 +15,27 @@ Things.ViewOpenBehavior = {
   properties:{
     /**
      * view를 full screen 다이얼로그로 오픈요청
-     * 
+     ********
      * @event things-open-full-screen-view
      */
     /**
      * view를 기본 다이얼로그로 오픈요청
-     * 
+     ********
      * @event things-open-popup-view
      */
     /**
      * 다이얼로그 닫기 요청 .
-     * 
+     *******
      * @event things-close-popup-view
      */
   },
   /**
    * view를 full screen 다이얼로그로 오픈한다.
-   *
+   *********
    * @param {String} view
    * @param {Boolean} modal
    * @param {Object} record
+   *
    */
   popupFullScreenView: function(view, modal, record) {
     var eventDetail = { view: view, record: record, modal: modal };
@@ -43,7 +45,7 @@ Things.ViewOpenBehavior = {
 
   /**
    * view를 기본 다이얼로그로 오픈한다.
-   *
+   *********
    * @param {Object} view
    * @param {Boolean} modal
    * @param {Function} openCallback
@@ -56,6 +58,7 @@ Things.ViewOpenBehavior = {
 
   /**
    * view를 기본 다이얼로그로 닫는다.
+   * ********
    */
   closePopupView: function() {
     var eventDetail = this;
