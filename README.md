@@ -1,15 +1,15 @@
 # things-view-open-behavior
 
-## View를 Open해주는 Behavior.
+## This is a behavior that opens a view.
 
- view를 기본 다이얼로그로 오픈하는 함수와 FullScreen 다이얼로그로 오픈하는 함수가 있다.
+There are two kinds of funtions to open a view: the default dialog and the FullScreen dialog.
 
 ***
-view를 full screen 다이얼로그로 오픈요청  `@event things-open-full-screen-view`
+Open the view with a fullscreen dialog. `@event things-open-full-screen-view`
 ***
-view를 기본 다이얼로그로 오픈요청 `@event things-open-popup-view`
+Open the view with the default dialog. `@event things-open-popup-view`
 ***
-다이얼로그 닫기 요청 @event things-close-popup-view
+Close the request with dialog. `@event things-close-popup-view`
 
 *****
 </br></br>
@@ -17,8 +17,7 @@ view를 기본 다이얼로그로 오픈요청 `@event things-open-popup-view`
 
 ## Dependencies
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+Element dependencies are managed via [Bower](http://bower.io/). You can install that via:
 
     npm install -g bower
 
