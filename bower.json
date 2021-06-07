@@ -1,8 +1,8 @@
 {
   "name": "things-view-open-behavior",
-  "version": "v2.2.0",
+  "version": "v2.2.1",
   "authors": [
-    "Hatio Lab. <heartyoh@hatiolab.com>"
+    "Shenzhen Weixun"
   ],
   "description": "things-full-screen-dialog를 열어 주는 Behavior.",
   "keywords": [
@@ -11,8 +11,6 @@
     "seed"
   ],
   "main": "things-view-open-behavior.html",
-  "license": "http://license.hatiolab.com/EULA",
-  "homepage": "http://elements.hatiolab.com/",
   "ignore": [
     "/.*",
     "/test/"

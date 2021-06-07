@@ -1,74 +1,72 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html" />
 
 <script>
+  window.Things = window.Things || {};
 
-window.Things = window.Things || {};
-
-/**
- * ## things-view-open-behavior
- * View를 Open해주는 Behavior.
- * view를 기본 다이얼로그로 오픈하는 함수와 FullScreen 다이얼로그로 오픈하는 함수가 있다.
- *
- * @polymerBehavior Things.ViewOpenBehavior
- */
-Things.ViewOpenBehavior = {
-  properties:{
-    /**
-     * view를 full screen 다이얼로그로 오픈요청
-     ********
-     * @event things-open-full-screen-view
-     */
-    /**
-     * view를 기본 다이얼로그로 오픈요청
-     ********
-     * @event things-open-popup-view
-     */
-    /**
-     * 다이얼로그 닫기 요청 .
-     *******
-     * @event things-close-popup-view
-     */
-  },
   /**
-   * view를 full screen 다이얼로그로 오픈한다.
-   *********
-   * @param {String} view
-   * @param {Boolean} modal
-   * @param {Object} record
+   * ## things-view-open-behavior
+   * View를 Open해주는 Behavior.
+   * view를 기본 다이얼로그로 오픈하는 함수와 FullScreen 다이얼로그로 오픈하는 함수가 있다.
    *
+   * @polymerBehavior Things.ViewOpenBehavior
    */
-  popupFullScreenView: function(view, modal, record) {
-    var eventDetail = { view: view, record: record, modal: modal };
-    var event = new CustomEvent('things-open-full-screen-view', { 'detail': eventDetail });
-    document.dispatchEvent(event);
-  },
+  Things.ViewOpenBehavior = {
+    properties: {
+      /**
+       * view를 full screen 다이얼로그로 오픈요청
+       ********
+       * @event things-open-full-screen-view
+       */
+      /**
+       * view를 기본 다이얼로그로 오픈요청
+       ********
+       * @event things-open-popup-view
+       */
+      /**
+       * 다이얼로그 닫기 요청 .
+       *******
+       * @event things-close-popup-view
+       */
+    },
+    /**
+     * view를 full screen 다이얼로그로 오픈한다.
+     *********
+     * @param {String} view
+     * @param {Boolean} modal
+     * @param {Object} record
+     *
+     */
+    popupFullScreenView: function (view, modal, record) {
+      var eventDetail = { view: view, record: record, modal: modal };
+      var event = new CustomEvent('things-open-full-screen-view', { detail: eventDetail });
+      document.dispatchEvent(event);
+    },
 
-  /**
-   * view를 기본 다이얼로그로 오픈한다.
-   *********
-   * @param {Object} view
-   * @param {Boolean} modal
-   * @param {Function} openCallback
-   */
-  openPopupView: function(view, modal, openCallback, closeCallback) {
-    var eventDetail = { view: view, modal: modal, openCallback: openCallback, closeCallback: closeCallback };
-    var event = new CustomEvent('things-open-popup-view', { 'detail': eventDetail });
-    document.dispatchEvent(event);
-  },
+    /**
+     * view를 기본 다이얼로그로 오픈한다.
+     *********
+     * @param {Object} view
+     * @param {Boolean} modal
+     * @param {Function} openCallback
+     */
+    openPopupView: function (view, modal, openCallback, closeCallback) {
+      var eventDetail = { view: view, modal: modal, openCallback: openCallback, closeCallback: closeCallback };
+      var event = new CustomEvent('things-open-popup-view', { detail: eventDetail });
+      document.dispatchEvent(event);
+    },
 
-  /**
-   * view를 기본 다이얼로그로 닫는다.
-   * ********
-   */
-  closePopupView: function() {
-    var eventDetail = this;
-    var event = new CustomEvent('things-close-popup-view', { 'detail': eventDetail });
-    document.dispatchEvent(event);
-  }
-};
-
+    /**
+     * view를 기본 다이얼로그로 닫는다.
+     * ********
+     */
+    closePopupView: function () {
+      var eventDetail = this;
+      var event = new CustomEvent('things-close-popup-view', { detail: eventDetail });
+      document.dispatchEvent(event);
+    },
+  };
 </script>
